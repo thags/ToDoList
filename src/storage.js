@@ -49,4 +49,8 @@ const getProjects = function(){
     return x;
 }
 
-export {addToArray, getProjects};
+const gettodoItems = function(project){
+    return projects[project];
+}
+
+export {addToArray, getProjects, gettodoItems};
