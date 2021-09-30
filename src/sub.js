@@ -1,5 +1,5 @@
 import PubSub from 'pubsub-js';
-import addToArray from './storage.js';
+import {addToArray} from './storage.js';
 import createSideBar from './DOM.js'
 
 //New todo object added

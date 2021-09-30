@@ -1,4 +1,4 @@
-import {getProjects, projects} from './storage.js';
+import {getProjects} from './storage.js';
 
 const createEle = function(type){
     return document.createElement(type);
@@ -17,6 +17,7 @@ const append = function(ele, parentItem){
 }
 
 
+
 const createSideBar = function (){
     const content = document.querySelector('#content');
     //define items
@@ -30,6 +31,7 @@ const createSideBar = function (){
     //addText to elements
     let todoProjects = getProjects();
     addText(projectItems, todoProjects);
+    console.log("DOM text set");
 
     //Append items
     append(sideBar, content);
