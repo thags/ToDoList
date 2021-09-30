@@ -1,5 +1,3 @@
-import PubSub from 'pubsub-js';
-
 //Stores the toDo objects and categories
 let todoArray = [];
 
@@ -12,4 +10,5 @@ const addToArray = function (msg, data){
     }
 }
 
-PubSub.subscribe('toDoAdded', addToArray);
+
+export default addToArray
