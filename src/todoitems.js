@@ -1,3 +1,5 @@
+import PubSub from 'pubsub-js';
+
 class todoObject {
     constructor(title, description, dueDate, priority, status){
         this.title = title;
@@ -5,7 +7,7 @@ class todoObject {
         this.dueDate = dueDate;
         this.priority = priority;
         this.status = status;
-        console.log(this);
+        PubSub.publish('toDoAdded', this);
     }
 }
 
