@@ -1,14 +1,26 @@
 //Stores the toDo objects and categories
-let todoArray = [];
+let todos = [];
+let projects = {
+    "default":[],
+}
+
 
 const addToArray = function (msg, data){
     switch(msg){
         case 'toDoAdded':
-            todoArray.push(data);
-            console.log(todoArray);
+            const project = data.project;
+            projects[project].push(data);
+            console.log(projects);
+            break;
+        case 'projectAdded':
+            projects[data] = [];
+            console.log(data);
             break;
     }
 }
 
+const doesProjectExist = function(project){
+
+}
 
 export default addToArray
