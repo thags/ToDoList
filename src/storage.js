@@ -49,4 +49,4 @@ const getProjects = function(){
     return x;
 }
 
-export {addToArray, getProjects, projects};
+export {addToArray, getProjects};

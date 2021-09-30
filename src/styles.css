@@ -3,4 +3,12 @@
     flex-direction: column;
     border-style: solid;
     border-color: black;
+    width: 15vw;
+    height: 100vh;
+}
+.projectList{
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
 }

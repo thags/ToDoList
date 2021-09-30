@@ -16,6 +16,21 @@ const append = function(ele, parentItem){
     parentItem.appendChild(ele);
 }
 
+const createList = function(listType, cName, parentItem, projectListElements){
+    projectListElements = [...projectListElements];
+    const newList = createEle(listType);
+    addClassList(newList, cName);
+    append(newList, parentItem);
+    for(let i = 0; i < projectListElements.length; i++){
+        const newListItem = createEle("li");
+        append(newListItem, newList);
+        addText(newListItem, projectListElements[i]);
+        addClassList(newListItem, i);
+    }
+
+
+}
+
 
 
 const createSideBar = function (){
@@ -30,7 +45,7 @@ const createSideBar = function (){
 
     //addText to elements
     let todoProjects = getProjects();
-    addText(projectItems, todoProjects);
+    createList("ul", "projectList", projectItems, todoProjects);
     console.log("DOM text set");
 
     //Append items
