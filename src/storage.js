@@ -45,7 +45,8 @@ const addToDotoProject = function(project, todo){
 
 //just return an array of all the projects listed as Keys in the projects array
 const getProjects = function(){
-    return Object.keys(projects);
+    const x = [...Object.keys(projects)];
+    return x;
 }
 
-export default addToArray
+export {addToArray, getProjects, projects};

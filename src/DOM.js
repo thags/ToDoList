@@ -1,3 +1,5 @@
+import {getProjects, projects} from './storage.js';
+
 const createEle = function(type){
     return document.createElement(type);
 }
@@ -17,15 +19,28 @@ const append = function(ele, parentItem){
 
 const createSideBar = function (){
     const content = document.querySelector('#content');
-    const sideBar = createEle("div");
+    //define items
+    const sideBar = createEle('div');
+    const projectItems = createEle('div');
+
+    //add class list items
     addClassList(sideBar, "sidebar");
-    addText(sideBar, "Test");
+    addClassList(projectItems, "projects");
+
+    //addText to elements
+    let todoProjects = getProjects();
+    addText(projectItems, todoProjects);
+
+    //Append items
     append(sideBar, content);
-    
+    append(projectItems, sideBar);
 }
 
 
 //TODO Make a function to show todoobject items (Use PubSUB?)
+const createToDoCards = function(selectedProject = "deafult"){
+    const content = document.querySelector('#content');
+}
 
 
 
