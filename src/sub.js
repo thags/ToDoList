@@ -1,9 +1,21 @@
 import PubSub from 'pubsub-js';
 import {addToArray} from './storage.js';
-import {createSideBar, createToDoCards, showProjectPopup, addToProjectList, hideProjectPopup} from './DOM.js'
+import {addToDoFromUI} from './todoitems.js';
+import {createSideBar, 
+    createToDoCards, 
+    showProjectPopup, 
+    addToProjectList, 
+    hideProjectPopup, 
+    showAddToDoPopUp, 
+    hideAddToDoPopUp,
+    createNewToDoCard,} from './DOM.js';
 
 //New todo object added
 PubSub.subscribe('toDoAdded', addToArray);
+PubSub.subscribe('toDoAdded', createNewToDoCard);
+PubSub.subscribe('addToDoClicked', showAddToDoPopUp);
+PubSub.subscribe('ToDoAddedFromUI', addToDoFromUI);
+PubSub.subscribe('ToDoAddedFromUI', hideAddToDoPopUp);
 
 //New project add
 PubSub.subscribe('projectAdded', addToArray);

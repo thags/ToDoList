@@ -79,6 +79,49 @@ const createToDoCardElements = function(todoObjects, parentItem){
     }
 }
 
+const createNewToDoCard = function(msg, data){
+    const parentItem = document.querySelector(".toDoCards");
+    const newCard = createEle("div");
+    addClassList(newCard, "toDoCards");
+    append(newCard, parentItem);
+    let todoObjects = [data];
+    for(let i = 0; i < todoObjects.length; i++){
+        //declare variables of items we may want from the object
+        const title = todoObjects[i].title;
+        const description = todoObjects[i].description;
+        const dueDate = todoObjects[i].dueDate;
+        const priority = todoObjects[i].priority;
+        const status = todoObjects[i].status;
+        // create new div elements in order we want them displayed
+        const newCardItem = createEle("div");
+        const cardTitle = createEle("div");
+        //const cardDescription = createEle("div");
+        const carddueDate = createEle("div");
+        //const cardPriority = createEle("div");
+        //const cardStatus = createEle("div");
+        //add classes
+        addClassList(newCardItem, "todoCard");
+        addClassList(cardTitle, "title");
+        //addClassList(cardDescription, "description");
+        addClassList(carddueDate, "duedate");
+        //addClassList(cardPriority, "priority");
+        //addClassList(cardStatus, "status");
+        //set text
+        addText(cardTitle, title);
+        //addText(cardDescription, description);
+        addText(carddueDate, `Due: ${dueDate}`);
+        //addText(cardPriority, priority);
+        //addText(cardStatus, status);
+        //append
+        append(newCardItem, newCard);
+        append(cardTitle, newCardItem);
+        //append(cardDescription,newCardItem);
+        append(carddueDate,newCardItem);
+        //append(cardPriority,newCardItem);
+        //append(cardStatus,newCardItem);
+    }
+};
+
 const showProjectPopup = function(){
     const backgroundPopUp = document.querySelector("#popUpBackground").style;
     const projectPopUp = document.querySelector("#popUpAddProject").style;
@@ -90,7 +133,6 @@ const showProjectPopup = function(){
 };
 
 const hideProjectPopup = function(msg, data){
-    const submitButton = document.querySelector('#addProjectButton');
     const backgroundPopUp = document.querySelector("#popUpBackground").style;
     const projectPopUp = document.querySelector("#popUpAddProject").style;
     const inputPopUp = document.querySelector("#addProject").style;
@@ -99,6 +141,25 @@ const hideProjectPopup = function(msg, data){
     inputPopUp.display = "none";
 }
 
+const showAddToDoPopUp = function(){
+    const backgroundPopUp = document.querySelector("#popUpBackground").style;
+    const projectPopUp = document.querySelector("#popUpAddProject").style;
+    const inputPopUp = document.querySelector("#addToDo").style;
+
+    backgroundPopUp.display = "flex";
+    projectPopUp.display = "flex";
+    inputPopUp.display = "flex";
+}
+
+const hideAddToDoPopUp = function(msg,data){
+    const backgroundPopUp = document.querySelector("#popUpBackground").style;
+    const projectPopUp = document.querySelector("#popUpAddProject").style;
+    const inputPopUp = document.querySelector("#addToDo").style;
+
+    backgroundPopUp.display = "none";
+    projectPopUp.display = "none";
+    inputPopUp.display = "none";
+}
 
 
 const createSideBar = function (){
@@ -107,6 +168,7 @@ const createSideBar = function (){
     const sideBar = createEle('div');
     const projectItems = createEle('div');
     const addProjectButton = createEle('div');
+    const addToDoButton = createEle('div');
 
     //add class list items
     addClassList(sideBar, "sidebar");
@@ -116,14 +178,17 @@ const createSideBar = function (){
     let todoProjects = getProjects();
     createList("ul", "projectList", projectItems, todoProjects);
     addText(addProjectButton, 'Add Project');
+    addText(addToDoButton, "Add To-Do");
     
     //add event listener
     addProjectButton.addEventListener("click", function(){PubSub.publish('addProjectClicked');});
+    addToDoButton.addEventListener("click", function(){PubSub.publish('addToDoClicked');});
 
     //Append items
     append(sideBar, content);
     append(projectItems, sideBar);
     append(addProjectButton, sideBar);
+    append(addToDoButton, sideBar);
 }
 
 
@@ -142,4 +207,13 @@ const createToDoCards = function(selectedProject = "default"){
 
 
 
-export {createSideBar, createToDoCards, showProjectPopup, addToProjectList, hideProjectPopup};
+export {createSideBar, 
+    createToDoCards, 
+    showProjectPopup, 
+    addToProjectList, 
+    hideProjectPopup, 
+    showAddToDoPopUp, 
+    hideAddToDoPopUp,
+    createNewToDoCard,
+
+};

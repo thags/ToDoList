@@ -12,4 +12,14 @@ class todoObject {
     }
 }
 
-export default todoObject
+const addToDoFromUI = function(){
+        const title = document.querySelector("#title").value;
+        const description = document.querySelector("#description").value;
+        const dueDate = document.querySelector("#dueDate").value;
+        const priority = document.querySelector("#priority").value;
+        const status = document.querySelector("#Status").value;
+        const project = document.querySelector("#project").value;
+        new todoObject(title, description, dueDate, priority, status, project);
+};
+
+export {todoObject, addToDoFromUI};
