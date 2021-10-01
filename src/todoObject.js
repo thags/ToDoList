@@ -9,33 +9,40 @@ class toDoObject{
 
     display(){
         //create needed elements
-        const containerItem = document.querySelector('#todoCards');
+        const containerItem = document.querySelector(`.${this.project}`);
         const newCard = document.createElement("div");
         const titleEle = document.createElement('div');
         const dueDateEle = document.createElement('div');
-        const title = this.title;
+        const title = (this.title.split(" ")).join("");
         const cardControl = document.createElement('div');
         const deleteCard = document.createElement('div');
 
         //assign text
-        titleEle.innerText = title;
+        titleEle.innerText = this.title;
         dueDateEle.innerText = this.dueDate;
         deleteCard.innerText = "x";
 
+        //assign classes or ID's
         newCard.id = `${title}`;
         newCard.classList.add("todoCard");
-        //newCard.classList.add(title);
         titleEle.classList.add("title");
         dueDateEle.classList.add("dueDate");
 
+        //append children and parents
         containerItem.appendChild(newCard);
         newCard.appendChild(titleEle);
         newCard.appendChild(dueDateEle);
+        newCard.appendChild(cardControl);
+        cardControl.appendChild(deleteCard);
+
+        //add events
+        deleteCard.addEventListener("click", this.delete.bind(this));
     }
 
     delete(){
-        const itemCardParent = document.querySelector('#todoCards');
-        const itemCard = document.querySelector(`#${this.title}`);
+        const title = (this.title.split(" ")).join("");
+        const itemCardParent = document.querySelector(`.${this.project}`);
+        const itemCard = document.querySelector(`#${title}`);
         while(itemCard.lastChild){
             itemCard.removeChild(itemCard.lastChild);
         }
