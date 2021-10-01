@@ -11,3 +11,6 @@ PubSub.subscribe('projectAdded', addToArray);
 //Page loaded
 PubSub.subscribe('pageLoaded', createSideBar);
 PubSub.subscribe('pageLoaded', createToDoCards);
+
+//add project button clicked
+PubSub.subscribe('addProjectClicked', function(){console.log("clicked");});

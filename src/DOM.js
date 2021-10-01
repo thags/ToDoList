@@ -1,4 +1,5 @@
 import {getProjects, gettodoItems} from './storage.js';
+import PubSub from 'pubsub-js';
 
 const createEle = function(type){
     return document.createElement(type);
@@ -78,6 +79,7 @@ const createSideBar = function (){
     //define items
     const sideBar = createEle('div');
     const projectItems = createEle('div');
+    const addProjectButton = createEle('div');
 
     //add class list items
     addClassList(sideBar, "sidebar");
@@ -86,11 +88,15 @@ const createSideBar = function (){
     //addText to elements
     let todoProjects = getProjects();
     createList("ul", "projectList", projectItems, todoProjects);
-    console.log("DOM text set");
+    addText(addProjectButton, 'Add Project');
+    
+    //add event listener
+    addProjectButton.addEventListener("click", function(){PubSub.publish('addProjectClicked');});
 
     //Append items
     append(sideBar, content);
     append(projectItems, sideBar);
+    append(addProjectButton, sideBar);
 }
 
 
