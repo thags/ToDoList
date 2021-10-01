@@ -30,6 +30,13 @@ const createList = function(listType, cName, parentItem, projectListElements){
     }
 }
 
+const addToProjectList = function(msg, listItemText){
+    const projectList = document.querySelector(".projectList");
+    const newListItem = createEle("li");
+    addText(newListItem, listItemText);
+    append(newListItem, projectList);
+}
+
 const createToDoCardElements = function(todoObjects, parentItem){
     const newCard = createEle("div");
     addClassList(newCard, "toDoCards");
@@ -70,6 +77,26 @@ const createToDoCardElements = function(todoObjects, parentItem){
         //append(cardPriority,newCardItem);
         //append(cardStatus,newCardItem);
     }
+}
+
+const showProjectPopup = function(){
+    const backgroundPopUp = document.querySelector("#popUpBackground").style;
+    const projectPopUp = document.querySelector("#popUpAddProject").style;
+    const inputPopUp = document.querySelector("#addProject").style;
+
+    backgroundPopUp.display = "flex";
+    projectPopUp.display = "flex";
+    inputPopUp.display = "flex";
+};
+
+const hideProjectPopup = function(msg, data){
+    const submitButton = document.querySelector('#addProjectButton');
+    const backgroundPopUp = document.querySelector("#popUpBackground").style;
+    const projectPopUp = document.querySelector("#popUpAddProject").style;
+    const inputPopUp = document.querySelector("#addProject").style;
+    backgroundPopUp.display = "none";
+    projectPopUp.display = "none";
+    inputPopUp.display = "none";
 }
 
 
@@ -115,4 +142,4 @@ const createToDoCards = function(selectedProject = "default"){
 
 
 
-export {createSideBar, createToDoCards};
+export {createSideBar, createToDoCards, showProjectPopup, addToProjectList, hideProjectPopup};
