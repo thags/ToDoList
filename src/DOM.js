@@ -35,7 +35,7 @@ const createToDoCardElements = function(todoObjects, parentItem){
     append(newCard, parentItem);
     todoObjects = [...todoObjects];
     for(let i = 0; i < todoObjects.length; i++){
-        //declare variables of items we want from the object
+        //declare variables of items we may want from the object
         const title = todoObjects[i].title;
         const description = todoObjects[i].description;
         const dueDate = todoObjects[i].dueDate;
@@ -44,30 +44,30 @@ const createToDoCardElements = function(todoObjects, parentItem){
         // create new div elements in order we want them displayed
         const newCardItem = createEle("div");
         const cardTitle = createEle("div");
-        const cardDescription = createEle("div");
+        //const cardDescription = createEle("div");
         const carddueDate = createEle("div");
-        const cardPriority = createEle("div");
-        const cardStatus = createEle("div");
+        //const cardPriority = createEle("div");
+        //const cardStatus = createEle("div");
         //add classes
         addClassList(newCardItem, "todoCard");
         addClassList(cardTitle, "title");
-        addClassList(cardDescription, "description");
+        //addClassList(cardDescription, "description");
         addClassList(carddueDate, "duedate");
-        addClassList(cardPriority, "priority");
-        addClassList(cardStatus, "status");
+        //addClassList(cardPriority, "priority");
+        //addClassList(cardStatus, "status");
         //set text
         addText(cardTitle, title);
-        addText(cardDescription, description);
-        addText(carddueDate, dueDate);
-        addText(cardPriority, priority);
-        addText(cardStatus, status);
+        //addText(cardDescription, description);
+        addText(carddueDate, `Due: ${dueDate}`);
+        //addText(cardPriority, priority);
+        //addText(cardStatus, status);
         //append
         append(newCardItem, newCard);
         append(cardTitle, newCardItem);
-        append(cardDescription,newCardItem);
+        //append(cardDescription,newCardItem);
         append(carddueDate,newCardItem);
-        append(cardPriority,newCardItem);
-        append(cardStatus,newCardItem);
+        //append(cardPriority,newCardItem);
+        //append(cardStatus,newCardItem);
     }
 }
 

@@ -29,9 +29,11 @@
     width: 20vw;
 }
 
-.title, .description, .duedate, .priority, .status{
+.title, .duedate{
     display:flex;
     justify-content: center;
-    border-style: solid;
+    align-content: center;
     padding-top: 5px;
+    padding-bottom: 5px;
+    height: 50vh;
 }
