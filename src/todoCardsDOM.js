@@ -70,5 +70,6 @@ const changeDisplay = function(msg, display){
 export {displayCard,
         deleteCard,
         changeDisplay,
+        currentDisplay,
 
 };

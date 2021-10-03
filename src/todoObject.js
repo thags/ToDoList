@@ -1,4 +1,5 @@
 import PubSub from 'pubsub-js';
+import {currentDisplay} from "./todoCardsDOM.js";
 
 class toDoObject{
     constructor(title, description, dueDate, priority, project){
@@ -18,6 +19,17 @@ class toDoObject{
     }
 }
 
+const createToDoFromUI = function(){
+    const form = document.querySelector(".popUpToDoContainer");
+    const title = form.querySelector(".toDoTitle").value;
+    const description = form.querySelector(".toDoDescription").value;
+    const dueDate = form.querySelector(".toDoDueDate").value;
+    const priority = form.querySelector(".priority").value;
+    const project = currentDisplay.classList[0];
+    const newToDo = new toDoObject(title, description, dueDate, priority, project);
+    newToDo.display();
+
+}
 
 
-export {toDoObject};
+export {toDoObject, createToDoFromUI};

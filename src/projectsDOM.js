@@ -27,4 +27,14 @@ const createAddProjectButton = function(){
     newItem.addEventListener("click", function(){PubSub.publish("addProjectButtonPressed", this)})
 }
 
-export {createAddProjectButton, addToProjectListDOM};
+const createAddToDoButton = function(){
+    const parentEle = document.querySelector('#sideBar');
+    const newItem = document.createElement('div');
+    newItem.classList.add("addToDoButton");
+    parentEle.insertBefore(newItem, parentEle.firstChild);
+    newItem.innerText = "Add To-Do";
+
+    newItem.addEventListener("click", function(){PubSub.publish("addToDoButtonPressed", this)})
+};
+
+export {createAddProjectButton, addToProjectListDOM, createAddToDoButton};
