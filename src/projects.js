@@ -10,6 +10,7 @@ class projects{
             projectList.push(this.projectName);
         } else {
             alert("Duplicate project name");
+            
         }
     }
 
