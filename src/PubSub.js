@@ -1,5 +1,5 @@
 import PubSub from 'pubsub-js';
-import {displayCard, deleteCard} from './todoCardsDOM.js';
+import {displayCard, deleteCard, changeDisplay} from './todoCardsDOM.js';
 import {addToProjectListDOM, createAddProjectButton} from './projectsDOM.js';
 import {createDarkBackground, createAddProjectForm, changeProjectFormDisplay} from './popUpDOM.js';
 import projects from "./projects.js";
@@ -29,4 +29,4 @@ PubSub.subscribe("submitProjectButtonPressed", changeProjectFormDisplay);
 PubSub.subscribe('submitProjectButtonPressed', function(msg, project){new projects(project)});
 
 //project name clicked
-PubSub.subscribe("projectNameClicked", function(msg, data){console.log(data)});
+PubSub.subscribe("projectNameClicked", changeDisplay);

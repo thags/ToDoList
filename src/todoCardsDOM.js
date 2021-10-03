@@ -1,8 +1,22 @@
 import PubSub from 'pubsub-js';
 
+const todoCards = document.querySelector("#todoCards");
+let currentDisplay = todoCards.querySelector(".default");
+
+const createProjectContainer = function(project){
+    const check = todoCards.querySelector(`.${project}`);
+    if(check == null){
+        let newContainer = document.createElement('div');
+        todoCards.appendChild(newContainer);
+        newContainer.classList.add(`${project}`);
+        newContainer.style.display = "none";
+    }
+};
+
 const displayCard = function(msg, todoItem){
     //create needed elements
-    const containerItem = document.querySelector(`.${todoItem.project}`);
+    createProjectContainer(todoItem.project);
+    const containerItem = todoCards.querySelector(`.${todoItem.project}`);
     const newCard = document.createElement("div");
     const titleEle = document.createElement('div');
     const dueDateEle = document.createElement('div');
@@ -33,8 +47,8 @@ const displayCard = function(msg, todoItem){
 }
 
 const deleteCard = function(msg, todoItem){
-    const title = (todoItem.title.split(" ")).join("");
-    const itemCardParent = document.querySelector(`.${todoItem.project}`);
+    const title = (todoItem.title.split(" ")).join("_");
+    const itemCardParent = todoCards.querySelector(`.${todoItem.project}`);
     const itemCard = document.querySelector(`#${title}`);
     while(itemCard.lastChild){
         itemCard.removeChild(itemCard.lastChild);
@@ -42,8 +56,19 @@ const deleteCard = function(msg, todoItem){
     itemCardParent.removeChild(itemCard);
 }
 
+const changeDisplay = function(msg, display){
+    //only take action if we clicked on a view other than what is already there
+    if(todoCards.querySelector(`.${display}`) !== currentDisplay){
+        currentDisplay.style.display = "none";
+        currentDisplay = todoCards.querySelector(`.${display}`);
+        currentDisplay.style.display = "flex";
+    }
+    
+}
+
 
 export {displayCard,
         deleteCard,
-        
+        changeDisplay,
+
 };
