@@ -10,7 +10,8 @@ import {createDarkBackground,
     createToDoCardPopUp,
     changeCardPopUpDisplay} from './popUpDOM.js';
 import projects from "./projects.js";
-
+import {addToDoLocalStorage, addProjectLocalStorage} from "./localStorage.js";
+import checkStorage from './checkLocalStorage.js';
 
 ///page loaded for first time
 PubSub.subscribe('pageLoaded', createDarkBackground);
@@ -19,7 +20,10 @@ PubSub.subscribe('pageLoaded', createAddToDoButton);
 PubSub.subscribe('pageLoaded', createAddProjectForm);
 PubSub.subscribe('pageLoaded', createAddToDoForm);
 PubSub.subscribe('pageLoaded', createToDoCardPopUp);
-PubSub.subscribe('pageLoaded', function(){new projects("default")});
+PubSub.subscribe('pageLoaded', checkStorage);
+
+//new ToDo created
+PubSub.subscribe("toDoCreated", addToDoLocalStorage);
 
 //create new todo card
 PubSub.subscribe('createToDodisplay', displayCard);
@@ -27,9 +31,12 @@ PubSub.subscribe('createToDodisplay', displayCard);
 
 //delete a card
 PubSub.subscribe('deleteToDodisplay', deleteCard);
+//delte a todo
+PubSub.subscribe("deletedToDo", addToDoLocalStorage);
 
 //add a project
 PubSub.subscribe('createProject', addToProjectListDOM);
+PubSub.subscribe('createdNewProject', addProjectLocalStorage);
 
 //Add project button pressed
 PubSub.subscribe('addProjectButtonPressed', changeProjectFormDisplay);

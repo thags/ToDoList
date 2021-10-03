@@ -8,6 +8,7 @@ class projects{
         if (check === false){
             PubSub.publish("createProject", this);
             projectList.push(this.projectName);
+            PubSub.publish("createdNewProject", projectList)
         } else {
             alert("Duplicate project name");
             

@@ -1,6 +1,8 @@
 import PubSub from 'pubsub-js';
 import {currentDisplay} from "./todoCardsDOM.js";
 
+let todos = [];
+
 class toDoObject{
     constructor(title, description, dueDate, priority, project){
         this.title = title;
@@ -8,6 +10,8 @@ class toDoObject{
         this.dueDate = dueDate;
         this.priority = priority;
         this.project = project;
+        todos.push(this);
+        PubSub.publish("toDoCreated", todos);
     }
 
     display(){
@@ -15,6 +19,12 @@ class toDoObject{
     }
 
     delete(){
+        for(let i = 0; i < todos.length; i++){
+            if(todos[i] === this){
+                todos.splice(i, 1);
+            }
+        }
+        PubSub.publish("deletedToDo", todos);
         PubSub.publish("deleteToDodisplay", this);
     }
 
