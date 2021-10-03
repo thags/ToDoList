@@ -9,6 +9,9 @@
 #sideBar{
     display: flex;
     border-style: solid;
+    border-color: white;
+    padding: 10px;
+    border-right-color: black;
     flex-direction: column;
     margin-bottom: 30px;
     justify-content: center;
@@ -25,6 +28,15 @@
     width: 20vw;
     margin: 5px 2.5vw 5px 2.5vw;
     height: 80px;
+    align-content: center;
+    justify-content: center;
+    row-gap: 5px;
+    padding: 5px;
+}
+.title, .dueDate{
+    display:flex;
+    justify-content: center;
+    align-content: center;
 }
 
 .projectSubmitButton, .addProjectButton, .addToDoButton, .exitButton{
@@ -44,4 +56,19 @@
 #projects{
     list-style-type: none;
     cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+    text-align: center;
+}
+
+.expandCard, .deleteCard{
+    border-style: solid;
+    border-color: orange;
+    cursor: pointer;
+    color: black;
+    border-radius: 5px;
+    background: lightcoral;
+    text-decoration:none;
+    text-align: center;
 }
