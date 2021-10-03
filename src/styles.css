@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 #content{
     display:flex;
@@ -12,10 +13,35 @@
 }
 #todoCards {
     display: flex;
+=======
+#content{
+    display: flex;
+    row-gap: 10px;
+    column-gap: 10px;
+}
+
+.sidebar{
+    border-style: solid;
+    border-color: black;
+    width: 15vw;
+    height: 50vh;
+}
+.projectList{
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+}
+
+.toDoCards{
+    display: flex;
+    flex-wrap: wrap;
+>>>>>>> refs/remotes/origin/main
 }
 .todoCard{
     display:flex;
     flex-direction: column;
+<<<<<<< HEAD
     border-style: solid;
     width: 20vw;
     margin: 5px 2.5vw 5px 2.5vw;
@@ -27,10 +53,63 @@
     border-color: orange;
     cursor: pointer;
     padding: 10px 15px;
+=======
+    margin: 10px 10px 10px 10px;
+    border-style: solid;
+    height: 20vh;
+    width: 20vw;
+}
+
+.title, .duedate{
+    display:flex;
+    justify-content: center;
+    align-content: center;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    height: 50vh;
+}
+
+#popUpBackground{
+    background:rgba(0,0,0,0.6);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+#popUpAddProject, #addProject, #addToDo{
+    display:none;
+    flex-direction: column;
+    height: 250px;
+    width: 500px;
+    background: white;
+    padding: 20px;
+    border-radius: 5px;
+    position: relative;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 10px 10px 10px;
+}
+input{
+    margin: 2px auto;
+    display:block;
+    width: 50%;
+    padding: 2px;
+}
+#addProjectButton, #addToDoButton{
+    border-style: solid;
+    border-color: orange;
+    cursor: pointer;
+    padding: 10px 10px;
+>>>>>>> refs/remotes/origin/main
     color: black;
     border-radius: 5px;
     background: lightcoral;
     box-shadow: 6px 6px 29px -4px rgba(0,0,0,0.25);
+<<<<<<< HEAD
     margin-top: 25px;
     text-decoration:none;
     text-align: center;
@@ -40,3 +119,8 @@
     list-style-type: none;
     cursor: pointer;
 }
+=======
+    margin-top: 10px;
+    text-decoration:none;
+}
+>>>>>>> refs/remotes/origin/main

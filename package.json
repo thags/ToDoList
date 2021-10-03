@@ -17,12 +17,21 @@
   },
   "homepage": "https://github.com/thags/ToDoList#readme",
   "devDependencies": {
+<<<<<<< HEAD
+=======
+    "css-loader": "^6.3.0",
+    "style-loader": "^3.3.0",
+>>>>>>> refs/remotes/origin/main
     "webpack": "^5.55.1",
     "webpack-cli": "^4.8.0"
   },
   "dependencies": {
+<<<<<<< HEAD
     "css-loader": "^6.3.0",
     "pubsub-js": "^1.9.3",
     "style-loader": "^3.3.0"
+=======
+    "pubsub-js": "^1.9.3"
+>>>>>>> refs/remotes/origin/main
   }
 }
