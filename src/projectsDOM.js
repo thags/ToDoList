@@ -19,10 +19,10 @@ const createAddProjectButton = function(){
     const parentEle = document.querySelector('#sideBar');
     const newItem = document.createElement('div');
     newItem.classList.add("addProjectButton");
-    parentEle.appendChild(newItem);
+    parentEle.insertBefore(newItem, parentEle.firstChild);
     newItem.innerText = "Add Project";
 
     newItem.addEventListener("click", function(){PubSub.publish("addProjectButtonPressed", this)})
 }
 
-export {createAddProjectButton};
+export {createAddProjectButton, addToProjectListDOM};

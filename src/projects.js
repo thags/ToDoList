@@ -6,3 +6,5 @@ class projects{
         PubSub.publish("createProject", this);
     }
 }
+
+export default projects;
