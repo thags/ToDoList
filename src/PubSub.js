@@ -9,6 +9,7 @@ import projects from "./projects.js";
 PubSub.subscribe('pageLoaded', createDarkBackground);
 PubSub.subscribe('pageLoaded', createAddProjectButton);
 PubSub.subscribe('pageLoaded', createAddProjectForm);
+PubSub.subscribe('pageLoaded', function(){new projects("default")});
 
 //create new todo card
 PubSub.subscribe('createToDodisplay', displayCard);
@@ -24,6 +25,8 @@ PubSub.subscribe('createProject', addToProjectListDOM);
 PubSub.subscribe('addProjectButtonPressed', changeProjectFormDisplay);
 
 //submit project button pressed
-PubSub.subscribe("submitProjectButtonPressed", function(msg, data){console.log(data)});
 PubSub.subscribe("submitProjectButtonPressed", changeProjectFormDisplay);
 PubSub.subscribe('submitProjectButtonPressed', function(msg, project){new projects(project)});
+
+//project name clicked
+PubSub.subscribe("projectNameClicked", function(msg, data){console.log(data)});
