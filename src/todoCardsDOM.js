@@ -23,27 +23,35 @@ const displayCard = function(msg, todoItem){
     const title = (todoItem.title.split(" ")).join("");
     const cardControl = document.createElement('div');
     const deleteCard = document.createElement('div');
+    const expandCard = document.createElement('div');
 
     //assign text
     titleEle.innerText = todoItem.title;
     dueDateEle.innerText = todoItem.dueDate;
-    deleteCard.innerText = "x";
+    deleteCard.innerText = "Delete Card";
+    expandCard.innerText = "View Info"
 
     //assign classes or ID's
     newCard.id = `${title}`;
     newCard.classList.add("todoCard");
     titleEle.classList.add("title");
     dueDateEle.classList.add("dueDate");
+    cardControl.classList.add("cardControl")
+    deleteCard.classList.add('deleteCard');
+    expandCard.classList.add("expandCard");
 
     //append children and parents
     containerItem.appendChild(newCard);
     newCard.appendChild(titleEle);
     newCard.appendChild(dueDateEle);
     newCard.appendChild(cardControl);
+    cardControl.appendChild(expandCard);
     cardControl.appendChild(deleteCard);
+
 
     //add events
     deleteCard.addEventListener("click", todoItem.delete.bind(todoItem));
+    expandCard.addEventListener("click", todoItem.fullDisplay.bind(todoItem))
 }
 
 const deleteCard = function(msg, todoItem){

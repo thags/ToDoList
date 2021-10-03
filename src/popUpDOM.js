@@ -147,10 +147,86 @@ const createAddToDoForm = function(){
     popUpToDoContainer.style["justify-content"] = "center"; 
 };
 
+const createToDoCardPopUp = function(){
+    const darkBackground = document.querySelector('.popUpBackground');
+    const popUpCardInfoContainer = document.createElement('div');
+    popUpCardInfoContainer.classList.add("popUpCardInfoContainer");
+    darkBackground.appendChild(popUpCardInfoContainer);
+    const cardTitle = document.createElement('div');
+    const cardDescription = document.createElement('div');
+    const cardDueDate = document.createElement('div');
+    const cardPriority = document.createElement('div');
+    const cardProject = document.createElement('div');
+    const exitButton = document.createElement('div')
+
+    popUpCardInfoContainer.appendChild(cardTitle);
+    popUpCardInfoContainer.appendChild(cardDescription);
+    popUpCardInfoContainer.appendChild(cardDueDate);
+    popUpCardInfoContainer.appendChild(cardPriority);
+    popUpCardInfoContainer.appendChild(cardProject);
+    popUpCardInfoContainer.appendChild(exitButton);
+
+    cardTitle.classList.add("cardTitle");
+    cardDescription.classList.add("cardDescription");
+    cardDueDate.classList.add("cardDueDate");
+    cardPriority.classList.add("cardPriority");
+    cardProject.classList.add("cardProject");
+    exitButton.classList.add("exitButton");
+    exitButton.innerText = "Exit";
+    exitButton.addEventListener("click", function(){PubSub.publish("exitCardInfo", this)});
+
+    //styling
+    popUpCardInfoContainer.style["display"] = "none";
+    popUpCardInfoContainer.style["flex-direction"] = "column";
+    popUpCardInfoContainer.style["height"] =  "200px";
+    popUpCardInfoContainer.style["width"] = "500px";
+    popUpCardInfoContainer.style["background"] = "white";
+    popUpCardInfoContainer.style["padding"] = "20px";
+    popUpCardInfoContainer.style["border-radius"] = "5px";
+    popUpCardInfoContainer.style["position"] = "relative";
+    popUpCardInfoContainer.style["text-align"] = "center";
+    popUpCardInfoContainer.style["align-items"] = "center";
+    popUpCardInfoContainer.style["justify-content"] = "center";
+}
+
+const addInfoToCardPopUp = function(item){
+    const container = document.querySelector('.popUpCardInfoContainer');
+    const cardTitle = container.querySelector('.cardTitle');
+    const cardDescription = container.querySelector('.cardDescription');
+    const cardDueDate = container.querySelector('.cardDueDate');
+    const cardPriority = container.querySelector('.cardPriority');
+    const cardProject = container.querySelector('.cardProject');
+//title, description, dueDate, priority, project
+    cardTitle.innerText = `Title: ${item.title}`;
+    cardDescription.innerText = `Description: ${item.description}`;
+    cardDueDate.innerText = `Due Date: ${item.dueDate}`;
+    cardPriority.innerText = `Priority: ${item.priority}`;
+    cardProject.innerText = `Project: ${item.project}`;
+}
+const changeCardPopUpDisplay = function(msg, item){
+    const darkBackground = document.querySelector('.popUpBackground');
+    const popUpCardInfoContainer = document.querySelector(".popUpCardInfoContainer");
+    const projectDisplay = popUpCardInfoContainer.style.display;
+    switch(projectDisplay){
+        case "flex":
+            popUpCardInfoContainer.style.display = "none";
+            darkBackground.style.display = "none";
+            break;
+        case "none":
+            addInfoToCardPopUp(item);
+            popUpCardInfoContainer.style.display = "flex";
+            darkBackground.style.display = "flex";
+            break;
+    }
+}
+
+
 export {
     createDarkBackground, 
     createAddProjectForm,
     changeProjectFormDisplay,
     createAddToDoForm,
     changeToDoFormDisplay,
+    createToDoCardPopUp,
+    changeCardPopUpDisplay,
 };

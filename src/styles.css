@@ -2,6 +2,10 @@
 #content{
     display:flex;
 }
+.cardControl{
+    display:flex;
+    justify-content: space-between;
+}
 #sideBar{
     display: flex;
     border-style: solid;
@@ -23,7 +27,7 @@
     height: 80px;
 }
 
-.projectSubmitButton, .addProjectButton, .addToDoButton{
+.projectSubmitButton, .addProjectButton, .addToDoButton, .exitButton{
     border-style: solid;
     border-color: orange;
     cursor: pointer;

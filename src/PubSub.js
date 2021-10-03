@@ -2,7 +2,13 @@ import PubSub from 'pubsub-js';
 import {createToDoFromUI} from "./todoObject.js";
 import {displayCard, deleteCard, changeDisplay} from './todoCardsDOM.js';
 import {addToProjectListDOM, createAddProjectButton, createAddToDoButton} from './projectsDOM.js';
-import {createDarkBackground, createAddProjectForm, changeProjectFormDisplay, createAddToDoForm, changeToDoFormDisplay} from './popUpDOM.js';
+import {createDarkBackground, 
+    createAddProjectForm, 
+    changeProjectFormDisplay, 
+    createAddToDoForm, 
+    changeToDoFormDisplay, 
+    createToDoCardPopUp,
+    changeCardPopUpDisplay} from './popUpDOM.js';
 import projects from "./projects.js";
 
 
@@ -12,6 +18,7 @@ PubSub.subscribe('pageLoaded', createAddProjectButton);
 PubSub.subscribe('pageLoaded', createAddToDoButton);
 PubSub.subscribe('pageLoaded', createAddProjectForm);
 PubSub.subscribe('pageLoaded', createAddToDoForm);
+PubSub.subscribe('pageLoaded', createToDoCardPopUp);
 PubSub.subscribe('pageLoaded', function(){new projects("default")});
 
 //create new todo card
@@ -39,3 +46,8 @@ PubSub.subscribe("submitToDoButtonPressed", createToDoFromUI);
 PubSub.subscribe('submitToDoButtonPressed', changeToDoFormDisplay);
 //add to do button pressed
 PubSub.subscribe('addToDoButtonPressed', changeToDoFormDisplay);
+
+//display the full card
+PubSub.subscribe("fullDisplay", changeCardPopUpDisplay);
+//exit the card info display
+PubSub.subscribe("exitCardInfo",changeCardPopUpDisplay )

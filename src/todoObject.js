@@ -17,6 +17,10 @@ class toDoObject{
     delete(){
         PubSub.publish("deleteToDodisplay", this);
     }
+
+    fullDisplay(){
+        PubSub.publish("fullDisplay", this);
+    }
 }
 
 const createToDoFromUI = function(){
