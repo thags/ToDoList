@@ -12,6 +12,7 @@
 }
 #todoCards {
     display: flex;
+    flex-direction: row;
 }
 .todoCard{
     display:flex;
@@ -22,7 +23,7 @@
     height: 80px;
 }
 
-.projectSubmitButton, .addProjectButton{
+.projectSubmitButton, .addProjectButton, .addToDoButton{
     border-style: solid;
     border-color: orange;
     cursor: pointer;

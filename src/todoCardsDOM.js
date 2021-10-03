@@ -47,7 +47,7 @@ const displayCard = function(msg, todoItem){
 }
 
 const deleteCard = function(msg, todoItem){
-    const title = (todoItem.title.split(" ")).join("_");
+    const title = (todoItem.title.split(" ")).join("");
     const itemCardParent = todoCards.querySelector(`.${todoItem.project}`);
     const itemCard = document.querySelector(`#${title}`);
     while(itemCard.lastChild){
