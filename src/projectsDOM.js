@@ -5,6 +5,7 @@ const addToProjectListDOM = function(msg, project){
     const newListItem = document.createElement('li');
     newListItem.innerText = project.projectName;
     parentEle.appendChild(newListItem);
+    newListItem.classList.add(project.projectName);
     createNewProjectDiv(project.projectName);
     newListItem.addEventListener("click", function(){PubSub.publish("projectNameClicked", project.projectName)});
 };
